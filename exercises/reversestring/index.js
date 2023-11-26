@@ -38,7 +38,13 @@ function reverse(str) {
     // here char must come first and then concatenated with reverse
   }
 
-  return reverse;
+  //   return reverse;
+  /* ---  method4 --- */
+
+  //let's use reduce() helper
+  return strArray3.reduce((acc, char) => {
+    return (acc = char + acc);
+  }, "");
 }
 
 // reverse("Life");
