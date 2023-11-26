@@ -27,8 +27,15 @@ function reverse(str) {
   /* ---  method3 --- */
   let strArray3 = str.split("");
   let reverse = "";
-  for (let i = strArray3.length - 1; i >= 0; i--) {
-    reverse += strArray3[i];
+  //   for (let i = strArray3.length - 1; i >= 0; i--) {
+  //     reverse += strArray3[i];
+  //   }
+
+  /*--- avoiding for loop & instead using for-of loop because we can directly loop over string using for-of loop without having to convert string into an array---*/
+
+  for (let char of str) {
+    reverse = char + reverse;
+    // here char must come first and then concatenated with reverse
   }
 
   return reverse;
