@@ -8,6 +8,7 @@
 //   reverseInt(-15) === -51
 //   reverseInt(-90) === -9
 
+/* --- Solution-1
 function reverseInt(n) {
   let input = parseInt(n);
   let isNegative = false;
@@ -41,8 +42,31 @@ function reverseInt(n) {
   }
 
   return Number(output);
-}
+}*/
 
-reverseInt(597);
+function reverseInt(n) {
+  let input = parseInt(n);
+  let isNegative = false;
+
+  if (input < 0) {
+    input = Math.abs(input);
+    isNegative = true;
+  }
+  //convert number to array
+  let output = `${input}`.split("").reverse().join("");
+
+  // Find the index of the first non-zero character
+  let nonZeroIndex = 0;
+  while (output.charAt(nonZeroIndex) === "0") {
+    nonZeroIndex++;
+  }
+  // Slice the string to remove leading zeros
+  output = output.slice(nonZeroIndex);
+  if (isNegative) {
+    output = "-" + output;
+  }
+  return Number(output);
+}
+// reverseInt(597);
 
 module.exports = reverseInt;
