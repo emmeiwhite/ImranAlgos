@@ -5,48 +5,58 @@
 //   reverse('apple') === 'leppa'
 //   reverse('hello') === 'olleh'
 //   reverse('Greetings!') === '!sgniteerG'
+/* ---  method1 
+function reverse(str) {
+ 
+  let reversedArray = [];
+
+  const length = str.length; // string value uses Wrapper String and that's where we got the length property from!
+
+  // Convert string to array in JavaScript
+  const arr = Array.from(str);
+  // console.log(arr);
+
+  for (let i = length - 1; i >= 0; i--) {
+    reversedArray.push(arr[i]);
+  }
+
+  return reversedArray.join("");
+  
+
+ 
+}
+--- */
+
+/* --- Method-2
+function reverse(str) {
+  let reverse = "";
+
+  for (let ch of str) {
+    reverse = ch + reverse;
+  }
+}
+--- */
+
+/* --- Method-3
+function reverse(str) {
+  const strArr = str.split("");
+  return strArr.reverse().join("");
+}
+--- */
+
+/* --- Method-4
+function reverse(str) {
+  return [...str].reverse().join("");
+}
+--- */
+
+/*--- Method-5 ---*/
 
 function reverse(str) {
-  /* ---  method1 --- */
-  const strArray = Array.from(str);
-  let finalString1 = strArray.reverse().join("");
-  // return finalString1;
-
-  /* ---  method2 --- little too much though */
-  const strArray2 = [...str];
-  let reverseArray = [];
-
-  for (let i = strArray2.length - 1; i >= 0; i--) {
-    // console.log(strArray2[i]);
-    reverseArray.push(strArray2[i]);
-    // console.log(reverseArray);
-  }
-
-  //   return reverseArray.join("");
-
-  /* ---  method3 --- */
-  let strArray3 = str.split("");
-  let reverse = "";
-  //   for (let i = strArray3.length - 1; i >= 0; i--) {
-  //     reverse += strArray3[i];
-  //   }
-
-  /*--- avoiding for loop & instead using for-of loop because we can directly loop over string using for-of loop without having to convert string into an array---*/
-
-  for (let char of str) {
-    reverse = char + reverse;
-    // here char must come first and then concatenated with reverse
-  }
-
-  //   return reverse;
-  /* ---  method4 --- */
-
-  //let's use reduce() helper
-  return strArray3.reduce((acc, char) => {
-    return (acc = char + acc);
+  return str.split("").reduce((acc, curr) => {
+    return (acc = curr + acc);
   }, "");
 }
-
-// reverse("Life");
+reverse("Life");
 
 module.exports = reverse;
