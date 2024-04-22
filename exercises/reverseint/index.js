@@ -44,6 +44,7 @@ function reverseInt(n) {
   return Number(output);
 }*/
 
+/* ---
 function reverseInt(n) {
   let input = parseInt(n);
   let isNegative = false;
@@ -67,6 +68,69 @@ function reverseInt(n) {
   }
   return Number(output);
 }
+--- */
 // reverseInt(597);
 
+/* -- Method-2
+function reverseInt(num) {
+  let R,
+    Q,
+    reversed = "";
+
+  if (num === 0) return 0;
+
+  let numToTest;
+  if (num < 0) {
+    numToTest = -1 * num;
+  } else {
+    numToTest = num;
+  }
+
+  while (numToTest > 0) {
+    R = numToTest % 10;
+    Q = Math.floor(parseInt(numToTest / 10));
+    reversed += R;
+    numToTest = Q;
+  }
+  if (num < 0) {
+    return -1 * parseInt(reversed);
+  } else {
+    return parseInt(reversed);
+  }
+}
+--*/
+
+/* --- Method-2 little compact
+function reverseInt(num) {
+  let reversed = 0;
+  let isNegative = num < 0;
+
+  // Convert negative number to positive for processing
+  num = Math.abs(num);
+
+  while (num > 0) {
+    reversed = reversed * 10 + (num % 10);
+    num = Math.floor(num / 10);
+  }
+
+  // Convert back to negative if original input was negative
+  if (isNegative) {
+    reversed *= -1;
+  }
+
+  return reversed;
+}
+--- */
+
+function reverseInt(num) {
+  const numStr = num.toString();
+  const reverseStr = [...numStr].reverse().join("");
+  const revInt = parseInt(reverseStr);
+
+  if (num < 0) {
+    return -1 * revInt;
+  }
+
+  return revInt;
+}
 module.exports = reverseInt;
